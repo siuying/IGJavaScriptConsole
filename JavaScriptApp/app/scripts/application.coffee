@@ -1,3 +1,4 @@
+# Local JavaScript console
 class JavaScriptProcessor
   evaulate: (source, success, failure) ->
     try
@@ -6,6 +7,7 @@ class JavaScriptProcessor
     catch e
       failure(e)
 
+# Local javascript console
 class CoffeeScriptProcessor extends JavaScriptProcessor
   evaulate: (source, success, failure) ->
     try
@@ -14,12 +16,16 @@ class CoffeeScriptProcessor extends JavaScriptProcessor
     catch e
       failure(e)
 
+# WebSocket console
 class WebSocketProcessor
-  constructor: (address) ->
-    @ws = new WebSocket(address)
+  constructor: (@onReady, websocketUrl, language='ruby') ->
+    console.log "connect to websocket: #{websocketUrl}"
+    @ws = new WebSocket(websocketUrl)
+    @language = language
 
     @ws.onopen = =>
       console.log 'opened'
+      @onReady()
 
     @ws.onmessage = (event) =>
       console.log "event", event
@@ -56,19 +62,22 @@ class WebSocketProcessor
       @failure(message)
       @failure = null
 
-  evaulate: (source, success, failure) ->
+  evaulate: (source, success, failure) =>
     message =
       command: 'eval'
       source: source
+      language: @language
     command = JSON.stringify(message)
     @success = success
     @failure = failure
     @ws.send(command)
 
 class ConsoleController
-  constructor: ->
-    @jsConsole = $('#console').jqconsole("Hi!\n", '> ')
-    @compiler = new WebSocketProcessor('ws://localhost:3300/context')
+  constructor: (websocketUrl, language) ->
+    @jsConsole = $('#console').jqconsole("Connecting to #{websocketUrl}\n", '> ')
+    onReady = =>
+      @prompt()
+    @processor = new WebSocketProcessor onReady, websocketUrl, language
 
   prompt: ->
     @jsConsole.Prompt true, (input) =>
@@ -78,8 +87,10 @@ class ConsoleController
       failure = (error) =>
         @jsConsole.Write(error + '\n', 'jqconsole-error')  
         @prompt()
-      @compiler.evaulate(input, success, failure)
+      @processor.evaulate(input, success, failure)
 
 module.exports = ->
-  controller = new ConsoleController
+  WEBSOCKET_URL = "%%WEBSOCKET_URL%%" # should be replaced by server in runtime
+  WEBSOCKET_URL = 'ws://localhost:3300/context' if WEBSOCKET_URL == "%%WEBSOCKET" + "_URL%%"
+  controller = new ConsoleController(WEBSOCKET_URL, 'ruby')
   controller.prompt()
