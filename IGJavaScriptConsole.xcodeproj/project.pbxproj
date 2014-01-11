@@ -22,6 +22,8 @@
 		540546301880FA7900722F2E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5405460F1880FA7900722F2E /* UIKit.framework */; };
 		540546381880FA7900722F2E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 540546361880FA7900722F2E /* InfoPlist.strings */; };
 		5405463A1880FA7900722F2E /* IGJavaScriptConsoleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 540546391880FA7900722F2E /* IGJavaScriptConsoleTests.m */; };
+		540546451880FB2400722F2E /* JavaScripts in Resources */ = {isa = PBXBuildFile; fileRef = 540546441880FB2400722F2E /* JavaScripts */; };
+		540546461880FB2400722F2E /* JavaScripts in Resources */ = {isa = PBXBuildFile; fileRef = 540546441880FB2400722F2E /* JavaScripts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,7 @@
 		540546351880FA7900722F2E /* IGJavaScriptConsoleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IGJavaScriptConsoleTests-Info.plist"; sourceTree = "<group>"; };
 		540546371880FA7900722F2E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		540546391880FA7900722F2E /* IGJavaScriptConsoleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IGJavaScriptConsoleTests.m; sourceTree = "<group>"; };
+		540546441880FB2400722F2E /* JavaScripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = JavaScripts; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +117,7 @@
 		540546111880FA7900722F2E /* IGJavaScriptConsole */ = {
 			isa = PBXGroup;
 			children = (
+				540546431880FB0200722F2E /* Resources */,
 				5405461A1880FA7900722F2E /* AppDelegate.h */,
 				5405461B1880FA7900722F2E /* AppDelegate.m */,
 				5405461D1880FA7900722F2E /* Main_iPhone.storyboard */,
@@ -153,6 +157,14 @@
 				540546361880FA7900722F2E /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		540546431880FB0200722F2E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				540546441880FB2400722F2E /* JavaScripts */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,6 +245,7 @@
 			files = (
 				540546221880FA7900722F2E /* Main_iPad.storyboard in Resources */,
 				540546271880FA7900722F2E /* Images.xcassets in Resources */,
+				540546451880FB2400722F2E /* JavaScripts in Resources */,
 				5405461F1880FA7900722F2E /* Main_iPhone.storyboard in Resources */,
 				540546161880FA7900722F2E /* InfoPlist.strings in Resources */,
 			);
@@ -243,6 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				540546381880FA7900722F2E /* InfoPlist.strings in Resources */,
+				540546461880FB2400722F2E /* JavaScripts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
