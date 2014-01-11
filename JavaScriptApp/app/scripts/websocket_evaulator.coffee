@@ -1,9 +1,7 @@
 # evaulate with WebSocket
 class WebSocketEvaulator
-  constructor: (websocketUrl, language='ruby', @onReady, @onMessage, @onError) ->
-    console.log "connect to websocket: #{websocketUrl}"
-    @ws = new WebSocket(websocketUrl + "/eval/#{language}")
-    @language = language
+  constructor: (websocketUrl, @onReady, @onMessage, @onError) ->
+    @ws = new WebSocket(websocketUrl)
 
     @ws.onopen = =>
       console.info 'connection opened'
@@ -35,10 +33,11 @@ class WebSocketEvaulator
         @failedWithMessage("unexpected data format: #{event}")
 
     @ws.onclose = =>
-      @failedWithMessage("Connection closed")
+      @failedWithMessage("Connection closed.")
 
     @ws.onerror = (event) =>
-      @failedWithMessage("Unknown error: #{event}")
+      console.log("connection error", event)
+      @failedWithMessage("Connection error!")
 
   evaulate: (source, success, failure) =>
     message =

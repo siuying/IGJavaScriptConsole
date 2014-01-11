@@ -45,7 +45,14 @@ static const int jsConsoleLogLevel = LOG_LEVEL_VERBOSE;
         } else {
             wsLocation = [NSString stringWithFormat:@"%@://%@", scheme, wsHost];
         }
-        NSDictionary *replacementDict = [NSDictionary dictionaryWithObject:wsLocation forKey:@"WEBSOCKET_URL"];
+        
+        IGJavaScriptConsoleServer* server = (IGJavaScriptConsoleServer*) config.server;
+        NSString* language = server.language == IGJavaScriptConsoleServerLanguageRuby ? @"ruby" : @"javascript";
+        NSDictionary *replacementDict = @{
+                                          @"WEBSOCKET_URL": wsLocation,
+                                          @"LANGUAGE": language
+                                        };
+        
         return [[HTTPDynamicFileResponse alloc] initWithFilePath:[self filePathForURI:path]
                                                    forConnection:self
                                                        separator:@"%%"
@@ -59,7 +66,7 @@ static const int jsConsoleLogLevel = LOG_LEVEL_VERBOSE;
     DDLogDebug(@"%@[%p]: webSocketForURI: %@", THIS_FILE, self, path);
     IGJavaScriptConsoleServer* server = (IGJavaScriptConsoleServer*) config.server;
 
-    if([path isEqualToString:@"/eval/js"]) {
+    if([path isEqualToString:@"/eval/javascript"]) {
         return [[IGJavaScriptEvaulatorWebSocket alloc] initWithRequest:request socket:asyncSocket context:server.context];
     }
 

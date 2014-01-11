@@ -1,16 +1,17 @@
-# adapted from https://github.com/replit/jsrepl/blob/master/langs/ruby/jsrepl_ruby.coffee
-# provide some basic indentation in the console.
-class ConsoleMultilineHandler
-  constructor: (language) ->
-    @language = language
+class RubyConfig
+  # console - jqconsole object
+  # editor - ace editor object
+  @config: (console, editor) ->
+    console.SetIndentWidth(2)
+    console.RegisterMatching '(', ')'
+    console.RegisterMatching '[', ']'
+    console.RegisterMatching '{', '}'
 
-  multiLineCallback: (command) =>
-    if @language == 'ruby'
-      @rubyMultiLineCallback(command)
-    else
-      false
+    editor.getSession().setMode("ace/mode/ruby")
+    editor.getSession().setTabSize(2)
+    editor.getSession().setUseSoftTabs(true)
 
-  rubyMultiLineCallback: (command) ->
+  @multiLineCallback: (command) ->
     levels = 0
     parens = 0
     braces = 0
@@ -52,6 +53,9 @@ class ConsoleMultilineHandler
     else
       return false
 
+  @webSocketUrl: (base) ->
+    base + "/eval/ruby"
+
 BLOCK_OPENERS = [
   "begin"
   "module"
@@ -76,7 +80,7 @@ TOKENS = ///
 |[<>=]=?
 |:?[a-z@$][\w?!]*
 |[{}()\[\]]
+|\.[\w\s]+
 |[^\w\s]+
 ///ig
-
-module.exports = ConsoleMultilineHandler
+module.exports = RubyConfig
