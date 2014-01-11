@@ -1,3 +1,5 @@
+ConsoleRubyHelper = require("console_ruby_helper");
+
 # evaulate with WebSocket
 class WebSocketEvaulator
   constructor: (websocketUrl, language='ruby', @onReady, @onMessage, @onError) ->
@@ -62,8 +64,16 @@ class WebSocketEvaulator
 
 class ConsoleController
   constructor: (websocketUrl, language) ->
-    @jsConsole = $('#console').jqconsole("Connecting to #{websocketUrl}\n", '> ')
+    @jsConsole = $('#console').jqconsole("Connecting to #{websocketUrl}\n", '> ', '..')    
+    @rubyMode()
+
     @processor = new WebSocketEvaulator websocketUrl, language, @onReady, @onMessage, @onError
+
+  rubyMode: =>
+    @jsConsole.SetIndentWidth(2)
+    @jsConsole.RegisterMatching '(', ')'
+    @jsConsole.RegisterMatching '[', ']'
+    @jsConsole.RegisterMatching '{', '}'
 
   onReady: =>
     @prompt()
@@ -74,8 +84,8 @@ class ConsoleController
   onError: (message) =>
     @jsConsole.Write(message + '\n', 'jqconsole-error')
 
-  prompt: ->
-    @jsConsole.Prompt true, (input) =>
+  prompt: =>
+    inputCallback = (input) =>
       success = (result) =>
         @onMessage(result)
         @prompt()
@@ -83,6 +93,7 @@ class ConsoleController
         @onError(error)
         @prompt()
       @processor.evaulate(input, success, failure)
+    @jsConsole.Prompt true, inputCallback, ConsoleRubyHelper.multiLineCallback, false
 
 module.exports = ->
   WEBSOCKET_URL = "%%WEBSOCKET_URL%%" # should be replaced by server in runtime
