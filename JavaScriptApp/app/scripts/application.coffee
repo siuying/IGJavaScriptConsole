@@ -15,8 +15,10 @@ class ConsoleController
     @editor = ace.edit("editor")
     @editor.setTheme("ace/theme/xcode")
     @editor.getSession().setMode("ace/mode/ruby")
+    @editor.getSession().setTabSize(2)
+    @editor.getSession().setUseSoftTabs(true)
     @editor.commands.addCommand
-      name: 'evaulate'
+      name: 'Evaulate'
       bindKey: {win: 'Ctrl-Enter',  mac: 'Command-Enter'}
       exec: (editor) =>
         input = editor.getValue()

@@ -6,15 +6,13 @@ class WebSocketEvaulator
     @language = language
 
     @ws.onopen = =>
-      console.log 'opened'
+      console.info 'connection opened'
       @onReady()
 
     @ws.onmessage = (event) =>
-      console.log "event", event
       data = if event.data then JSON.parse(event.data) else { status: 'error', message: 'no response'}
       if data
         if data.status == "ok"
-          console.log "command: ok"
           if @success
             @success(data.result)
             @success = null
@@ -40,7 +38,6 @@ class WebSocketEvaulator
       @failedWithMessage("Connection closed")
 
     @ws.onerror = (event) =>
-      console.log "error", event
       @failedWithMessage("Unknown error: #{event}")
 
   evaulate: (source, success, failure) =>
@@ -53,6 +50,7 @@ class WebSocketEvaulator
     @ws.send(command)
 
   failedWithMessage: (message) ->
+    console.error(message)
     if @failure
       @failure(message)
       @failure = null
