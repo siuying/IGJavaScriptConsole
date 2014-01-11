@@ -7,12 +7,25 @@
 //
 
 #import "AppDelegate.h"
+#import "IGJavaScriptConsoleServer.h"
+#import "DDTTYLogger.h"
+#import "DDLog.h"
+#undef LOG_LEVEL_DEF
+#define LOG_LEVEL_DEF jsConsoleLogLevel
+static const int jsConsoleLogLevel = LOG_LEVEL_VERBOSE;
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+
+    NSError* error;
+    self.server = [[IGJavaScriptConsoleServer alloc] init];
+    self.server.port = 3300;
+    if (![self.server start:&error]) {
+        DDLogError(@"error: %@", error);
+    }
     return YES;
 }
 							
