@@ -91,6 +91,6 @@ class ConsoleController
 
 module.exports = ->
   WEBSOCKET_URL = "%%WEBSOCKET_URL%%" # should be replaced by server in runtime
-  WEBSOCKET_URL = 'ws://localhost:3300/context' if WEBSOCKET_URL == "%%WEBSOCKET" + "_URL%%"
+  WEBSOCKET_URL = 'ws://localhost:3300/context' if WEBSOCKET_URL.match "^%%WEBSOCKET_"
   controller = new ConsoleController(WEBSOCKET_URL, 'ruby')
   controller.prompt()

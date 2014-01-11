@@ -24,8 +24,8 @@ static const int jsConsoleLogLevel = LOG_LEVEL_VERBOSE;
 -(NSObject<HTTPResponse>*) httpResponseForMethod:(NSString *)method URI:(NSString *)path {
     DDLogDebug(@"%@ %@", method, path);
     
-    if ([path isEqualToString:@"/WebSocketTest2.js"]) {
-        // The socket.js file contains a URL template that needs to be completed:
+    if ([path isEqualToString:@"/scripts/application.js"]) {
+        // The /scripts/application.js file contains a URL template that needs to be completed:
         //
         // ws = new WebSocket("%%WEBSOCKET_URL%%");
         //
@@ -39,9 +39,9 @@ static const int jsConsoleLogLevel = LOG_LEVEL_VERBOSE;
         NSString *wsHost = [request headerField:@"Host"];
         if (wsHost == nil) {
             NSString *port = [NSString stringWithFormat:@"%hu", [asyncSocket localPort]];
-            wsLocation = [NSString stringWithFormat:@"%@://localhost:%@/service", scheme, port];
+            wsLocation = [NSString stringWithFormat:@"%@://localhost:%@/context", scheme, port];
         } else {
-            wsLocation = [NSString stringWithFormat:@"%@://%@/service", scheme, wsHost];
+            wsLocation = [NSString stringWithFormat:@"%@://%@/context", scheme, wsHost];
         }
         NSDictionary *replacementDict = [NSDictionary dictionaryWithObject:wsLocation forKey:@"WEBSOCKET_URL"];
         return [[HTTPDynamicFileResponse alloc] initWithFilePath:[self filePathForURI:path]
