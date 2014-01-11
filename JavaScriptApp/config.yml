@@ -1,0 +1,41 @@
+paths:
+  public: "public"
+groups:
+  scripts:
+    paths:
+      - app/scripts
+    concat:
+      "/scripts/application.js": "app/**/*.{js,coffee}"
+      "/scripts/vendor.js": "vendor/**/*.{js,coffee}"
+    order:
+      - vendor/jquery.min.js
+      - vendor/jquery-migrate-1.2.1.min.js
+      - vendor/jqconsole.min.js
+      - ...
+      - app/scripts/application.coffee
+  styles:
+    paths:
+      - app/styles
+    concat:
+      "/styles/app.css": "app/styles/**/[a-z]*.{css,scss,sass}"
+  images:
+    paths:
+      - app/images
+    sprite:
+      "../app/images/icons.scss": "app/images/**/*.png"
+  views:
+    paths:
+      - app/views
+    copy:
+      "/": "app/views/**/*.html"
+modules:
+  wrapper: cmd
+  ignored: vendor/**/*
+  definition: /scripts/app.js
+sprites:
+  url: /images/
+  path: /images/
+  selector: .icon-
+revision: index.html
+notification: true
+bundles:

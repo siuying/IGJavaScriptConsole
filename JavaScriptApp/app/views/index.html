@@ -11,10 +11,10 @@
     }
     /* The console container element */
     #console {
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
       background-color: black;
       margin: 0 auto;
       margin-top: 50px;
@@ -57,9 +57,8 @@
   </head>
   <body>
     <div id="console"></div>
-    <script src="jquery.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="jquery-migrate-1.2.1.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="jqconsole.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/scripts/vendor.js"></script>
+    <script src="/scripts/app.js"></script>
     <script>
       $(function () {
         var jqconsole = $('#console').jqconsole('Hi\n', '> ');
