@@ -1,5 +1,5 @@
 //
-//  IGJSContextWebSocket.h
+//  IGJavaScriptEvaulatorWebSocket.h
 //  IGJavaScriptConsole
 //
 //  Created by Francis Chong on 1/11/14.
@@ -9,10 +9,12 @@
 #import "WebSocket.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 
-@interface IGJSContextWebSocket : WebSocket
+@interface IGJavaScriptEvaulatorWebSocket : WebSocket
 
 @property (nonatomic, strong) JSContext* context;
 
 -(instancetype) initWithRequest:(HTTPMessage *)request socket:(GCDAsyncSocket *)socket context:(JSContext*)context;
+
+-(NSString*) evaulateSource:(NSString*)source;
 
 @end

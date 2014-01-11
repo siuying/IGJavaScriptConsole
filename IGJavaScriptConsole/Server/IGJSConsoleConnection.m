@@ -12,8 +12,10 @@
 
 #import "DDLog.h"
 #import "IGJSConsoleConnection.h"
-#import "IGJSContextWebSocket.h"
+#import "IGJavaScriptEvaulatorWebSocket.h"
 #import "IGJavaScriptConsoleServer.h"
+
+#import "IGRubyEvaulatorWebSocket.h"
 
 #undef LOG_LEVEL_DEF
 #define LOG_LEVEL_DEF jsConsoleLogLevel
@@ -39,9 +41,9 @@ static const int jsConsoleLogLevel = LOG_LEVEL_VERBOSE;
         NSString *wsHost = [request headerField:@"Host"];
         if (wsHost == nil) {
             NSString *port = [NSString stringWithFormat:@"%hu", [asyncSocket localPort]];
-            wsLocation = [NSString stringWithFormat:@"%@://localhost:%@/context", scheme, port];
+            wsLocation = [NSString stringWithFormat:@"%@://localhost:%@", scheme, port];
         } else {
-            wsLocation = [NSString stringWithFormat:@"%@://%@/context", scheme, wsHost];
+            wsLocation = [NSString stringWithFormat:@"%@://%@", scheme, wsHost];
         }
         NSDictionary *replacementDict = [NSDictionary dictionaryWithObject:wsLocation forKey:@"WEBSOCKET_URL"];
         return [[HTTPDynamicFileResponse alloc] initWithFilePath:[self filePathForURI:path]
@@ -55,10 +57,14 @@ static const int jsConsoleLogLevel = LOG_LEVEL_VERBOSE;
 
 - (WebSocket *)webSocketForURI:(NSString *)path {
     DDLogDebug(@"%@[%p]: webSocketForURI: %@", THIS_FILE, self, path);
-    
-    if([path isEqualToString:@"/context"]) {
-        IGJavaScriptConsoleServer* server = (IGJavaScriptConsoleServer*) config.server;
-        return [[IGJSContextWebSocket alloc] initWithRequest:request socket:asyncSocket context:server.context];
+    IGJavaScriptConsoleServer* server = (IGJavaScriptConsoleServer*) config.server;
+
+    if([path isEqualToString:@"/eval/js"]) {
+        return [[IGJavaScriptEvaulatorWebSocket alloc] initWithRequest:request socket:asyncSocket context:server.context];
+    }
+
+    if ([path isEqualToString:@"/eval/ruby"]) {
+        return [[IGRubyEvaulatorWebSocket alloc] initWithRequest:request socket:asyncSocket context:server.context];
     }
 
     return [super webSocketForURI:path];

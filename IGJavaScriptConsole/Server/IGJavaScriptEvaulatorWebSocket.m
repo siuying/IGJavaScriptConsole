@@ -1,20 +1,19 @@
 //
-//  IGJSContextWebSocket.m
+//  IGJavaScriptEvaulatorWebSocket.m
 //  IGJavaScriptConsole
 //
 //  Created by Francis Chong on 1/11/14.
 //  Copyright (c) 2014 Francis Chong. All rights reserved.
 //
 
-#import "IGJSContextWebSocket.h"
-#import "JSContext+OpalAdditions.h"
+#import "IGJavaScriptEvaulatorWebSocket.h"
 
 #import "DDLog.h"
 #undef LOG_LEVEL_DEF
 #define LOG_LEVEL_DEF jsConsoleLogLevel
 static const int jsConsoleLogLevel = LOG_LEVEL_VERBOSE;
 
-@implementation IGJSContextWebSocket
+@implementation IGJavaScriptEvaulatorWebSocket
 
 -(instancetype) initWithRequest:(HTTPMessage *)theRequest socket:(GCDAsyncSocket *)theSocket context:(JSContext*)context {
     self = [super initWithRequest:theRequest socket:theSocket];
@@ -26,10 +25,6 @@ static const int jsConsoleLogLevel = LOG_LEVEL_VERBOSE;
     DDLogDebug(@"open websocket connection");
 
     [super didOpen];
-
-    NSDictionary* message = @{@"status": @"info", @"message": @"JSContext ready."};
-    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:message options:0 error:nil];
-    [self sendMessage:[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding]];
 }
 
 - (void)didReceiveMessage:(NSString *)msg {
@@ -38,7 +33,7 @@ static const int jsConsoleLogLevel = LOG_LEVEL_VERBOSE;
                                                          options:0
                                                            error:&error];
     if (data) {
-        DDLogDebug(@"%@[%p]: didReceiveMessage: %@", THIS_FILE, self, data);
+        DDLogVerbose(@"%@[%p]: didReceiveMessage: %@", THIS_FILE, self, data);
         if (data[@"command"]) {
             NSString* command = data[@"command"];
             if ([command isEqualToString:@"eval"]) {
@@ -69,23 +64,24 @@ static const int jsConsoleLogLevel = LOG_LEVEL_VERBOSE;
     [super didClose];
 }
 
+- (NSString*) evaulateSource:(NSString*)source {
+    return [[self.context evaluateScript:source] toString];
+}
+
 #pragma mark - Private
 
 - (void) didReceiveEvaulateWithSource:(NSString*)source language:(NSString*)language {
     @synchronized(self.context) {
         self.context.exception = nil;
-        JSValue* value;
-
-        if ([language isEqualToString:@"ruby"]) {
-            value = [[self.context evaluateRuby:source] invokeMethod:@"$to_n" withArguments:@[]];
-        } else {
-            value = [self.context evaluateScript:source];
-        }
-
+        NSString* value = [self evaulateSource:source];
         if (!self.context.exception) {
-            NSString* valueString = [value toString];
+            NSString* valueString = value;
             NSDictionary* message = @{@"status": @"ok", @"result": valueString ? valueString : @"(null)"};
-            NSData* jsonData = [NSJSONSerialization dataWithJSONObject:message options:0 error:nil];
+            NSError* error;
+            NSData* jsonData = [NSJSONSerialization dataWithJSONObject:message options:0 error:&error];
+            if (error) {
+                DDLogError(@"error serializing data to json: %@", message);
+            }
             [self sendMessage:[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding]];
         } else {
             NSString* error = self.context.exception ? [self.context.exception toString] : @"Unknown error";

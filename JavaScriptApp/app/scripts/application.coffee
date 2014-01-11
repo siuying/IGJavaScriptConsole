@@ -4,7 +4,7 @@ ConsoleRubyHelper = require("console_ruby_helper");
 class WebSocketEvaulator
   constructor: (websocketUrl, language='ruby', @onReady, @onMessage, @onError) ->
     console.log "connect to websocket: #{websocketUrl}"
-    @ws = new WebSocket(websocketUrl)
+    @ws = new WebSocket(websocketUrl + "/eval/#{language}")
     @language = language
 
     @ws.onopen = =>
@@ -45,6 +45,15 @@ class WebSocketEvaulator
       console.log "error", event
       @failedWithMessage("Unknown error: #{event}")
 
+  evaulate: (source, success, failure) =>
+    message =
+      command: 'eval'
+      source: source
+    command = JSON.stringify(message)
+    @success = success
+    @failure = failure
+    @ws.send(command)
+
   failedWithMessage: (message) ->
     if @failure
       @failure(message)
@@ -52,28 +61,15 @@ class WebSocketEvaulator
     else
       @onError(message)
 
-  evaulate: (source, success, failure) =>
-    message =
-      command: 'eval'
-      source: source
-      language: @language
-    command = JSON.stringify(message)
-    @success = success
-    @failure = failure
-    @ws.send(command)
 
 class ConsoleController
   constructor: (websocketUrl, language) ->
     @jsConsole = $('#console').jqconsole("Connecting to #{websocketUrl}\n", '> ', '..')    
-    @rubyMode()
-
-    @processor = new WebSocketEvaulator websocketUrl, language, @onReady, @onMessage, @onError
-
-  rubyMode: =>
     @jsConsole.SetIndentWidth(2)
     @jsConsole.RegisterMatching '(', ')'
     @jsConsole.RegisterMatching '[', ']'
     @jsConsole.RegisterMatching '{', '}'
+    @processor = new WebSocketEvaulator websocketUrl, language, @onReady, @onMessage, @onError
 
   onReady: =>
     @prompt()
@@ -97,6 +93,6 @@ class ConsoleController
 
 module.exports = ->
   WEBSOCKET_URL = "%%WEBSOCKET_URL%%" # should be replaced by server in runtime
-  WEBSOCKET_URL = 'ws://localhost:3300/context' if WEBSOCKET_URL.match "^%%WEBSOCKET_"
+  WEBSOCKET_URL = 'ws://localhost:3300' if WEBSOCKET_URL.match "^%%WEBSOCKET_"
   controller = new ConsoleController(WEBSOCKET_URL, 'ruby')
   controller.prompt()
