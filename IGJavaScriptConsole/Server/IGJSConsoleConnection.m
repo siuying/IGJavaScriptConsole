@@ -9,6 +9,7 @@
 #import "DDLog.h"
 #import "IGJSConsoleConnection.h"
 #import "IGJSContextWebSocket.h"
+#import "IGJavaScriptConsoleServer.h"
 
 #undef LOG_LEVEL_DEF
 #define LOG_LEVEL_DEF jsConsoleLogLevel
@@ -25,8 +26,8 @@ static const int jsConsoleLogLevel = LOG_LEVEL_VERBOSE;
     DDLogDebug(@"%@[%p]: webSocketForURI: %@", THIS_FILE, self, path);
     
     if([path isEqualToString:@"/context"]) {
-        DDLogInfo(@"IGJSConsoleConnection: Creating IGJSWebSocket...");
-        return [[IGJSContextWebSocket alloc] initWithRequest:request socket:asyncSocket];
+        IGJavaScriptConsoleServer* server = (IGJavaScriptConsoleServer*) config.server;
+        return [[IGJSContextWebSocket alloc] initWithRequest:request socket:asyncSocket context:server.context];
     }
 
     return [super webSocketForURI:path];

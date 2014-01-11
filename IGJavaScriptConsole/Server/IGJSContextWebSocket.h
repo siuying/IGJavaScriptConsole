@@ -7,7 +7,12 @@
 //
 
 #import "WebSocket.h"
+#import <JavaScriptCore/JavaScriptCore.h>
 
 @interface IGJSContextWebSocket : WebSocket
+
+@property (nonatomic, strong) JSContext* context;
+
+-(instancetype) initWithRequest:(HTTPMessage *)request socket:(GCDAsyncSocket *)socket context:(JSContext*)context;
 
 @end
