@@ -7,6 +7,7 @@
 //
 
 #import "IGJSContextWebSocket.h"
+#import "JSContext+OpalAdditions.h"
 
 #import "DDLog.h"
 #undef LOG_LEVEL_DEF
@@ -38,10 +39,11 @@ static const int jsConsoleLogLevel = LOG_LEVEL_VERBOSE;
             NSString* command = data[@"command"];
             if ([command isEqualToString:@"eval"]) {
                 NSString* source = data[@"source"];
+                NSString* language = data[@"language"];
                 if (source) {
-                    [self didReceiveEvaulateWithSource:source];
+                    [self didReceiveEvaulateWithSource:source language:language];
                 } else {
-                    [self sendErrorMessage:@"Missing source"];
+                    [self sendErrorMessage:[NSString stringWithFormat:@"Missing source or language: %@", data]];
                 }
                 return;
             }
@@ -65,10 +67,17 @@ static const int jsConsoleLogLevel = LOG_LEVEL_VERBOSE;
 
 #pragma mark - Private
 
-- (void) didReceiveEvaulateWithSource:(NSString*)source {
+- (void) didReceiveEvaulateWithSource:(NSString*)source language:(NSString*)language {
     @synchronized(self.context) {
         self.context.exception = nil;
-        JSValue* value = [self.context evaluateScript:source];
+        JSValue* value;
+
+        if ([language isEqualToString:@"ruby"]) {
+            value = [[self.context evaluateRuby:source] invokeMethod:@"$to_n" withArguments:@[]];
+        } else {
+            value = [self.context evaluateScript:source];
+        }
+
         if (!self.context.exception) {
             NSString* valueString = [value toString];
             NSDictionary* message = @{@"status": @"ok", @"result": valueString ? valueString : @"(null)"};
