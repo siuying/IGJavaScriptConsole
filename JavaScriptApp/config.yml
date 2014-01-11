@@ -37,6 +37,6 @@ sprites:
   url: /images/
   path: /images/
   selector: .icon-
-revision: index.html
+revision: false
 notification: true
 bundles:
