@@ -28,6 +28,8 @@
 		5405464E1881013200722F2E /* IGJavaScriptConsoleServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5405464C1881013200722F2E /* IGJavaScriptConsoleServer.m */; };
 		5405465018810A4A00722F2E /* public in Resources */ = {isa = PBXBuildFile; fileRef = 5405464F18810A4A00722F2E /* public */; };
 		5405465118810A4A00722F2E /* public in Resources */ = {isa = PBXBuildFile; fileRef = 5405464F18810A4A00722F2E /* public */; };
+		540546541881331300722F2E /* IGJSContextWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 540546531881331300722F2E /* IGJSContextWebSocket.m */; };
+		540546551881331300722F2E /* IGJSContextWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 540546531881331300722F2E /* IGJSContextWebSocket.m */; };
 		5EA91B97C3BF4CD2BA8E7CF0 /* libPods-IGJavaScriptConsoleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DC846F0EA6048F882192145 /* libPods-IGJavaScriptConsoleTests.a */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +69,8 @@
 		5405464B1881013200722F2E /* IGJavaScriptConsoleServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IGJavaScriptConsoleServer.h; path = Server/IGJavaScriptConsoleServer.h; sourceTree = "<group>"; };
 		5405464C1881013200722F2E /* IGJavaScriptConsoleServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IGJavaScriptConsoleServer.m; path = Server/IGJavaScriptConsoleServer.m; sourceTree = "<group>"; };
 		5405464F18810A4A00722F2E /* public */ = {isa = PBXFileReference; lastKnownFileType = folder; name = public; path = JavaScriptApp/public; sourceTree = SOURCE_ROOT; };
+		540546521881331300722F2E /* IGJSContextWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IGJSContextWebSocket.h; path = Server/IGJSContextWebSocket.h; sourceTree = "<group>"; };
+		540546531881331300722F2E /* IGJSContextWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IGJSContextWebSocket.m; path = Server/IGJSContextWebSocket.m; sourceTree = "<group>"; };
 		558BC02CE36143709832F60F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DC846F0EA6048F882192145 /* libPods-IGJavaScriptConsoleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IGJavaScriptConsoleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DFB6F39569D4377A98EAA4C /* Pods-IGJavaScriptConsoleTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IGJavaScriptConsoleTests.xcconfig"; path = "Pods/Pods-IGJavaScriptConsoleTests.xcconfig"; sourceTree = "<group>"; };
@@ -192,6 +196,8 @@
 			children = (
 				540546481880FFC500722F2E /* IGJSConsoleConnection.h */,
 				540546491880FFC500722F2E /* IGJSConsoleConnection.m */,
+				540546521881331300722F2E /* IGJSContextWebSocket.h */,
+				540546531881331300722F2E /* IGJSContextWebSocket.m */,
 				5405464B1881013200722F2E /* IGJavaScriptConsoleServer.h */,
 				5405464C1881013200722F2E /* IGJavaScriptConsoleServer.m */,
 			);
@@ -367,6 +373,7 @@
 			files = (
 				540546251880FA7900722F2E /* ViewController.m in Sources */,
 				5405464D1881013200722F2E /* IGJavaScriptConsoleServer.m in Sources */,
+				540546541881331300722F2E /* IGJSContextWebSocket.m in Sources */,
 				5405461C1880FA7900722F2E /* AppDelegate.m in Sources */,
 				5405464A1880FFC500722F2E /* IGJSConsoleConnection.m in Sources */,
 				540546181880FA7900722F2E /* main.m in Sources */,
@@ -379,6 +386,7 @@
 			files = (
 				5405464E1881013200722F2E /* IGJavaScriptConsoleServer.m in Sources */,
 				5405463A1880FA7900722F2E /* IGJavaScriptConsoleTests.m in Sources */,
+				540546551881331300722F2E /* IGJSContextWebSocket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

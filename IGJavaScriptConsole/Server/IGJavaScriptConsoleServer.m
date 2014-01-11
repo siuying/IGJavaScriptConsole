@@ -16,8 +16,10 @@ static const int jsConsoleLogLevel = LOG_LEVEL_VERBOSE;
 
 @implementation IGJavaScriptConsoleServer
 
--(instancetype) init {
+-(instancetype) initWithContext:(JSContext*)context {
     self = [super init];
+
+    self.context = context;
     self.connectionClass = [IGJSConsoleConnection class];
     self.type = @"_http._tcp.";
 
@@ -26,6 +28,10 @@ static const int jsConsoleLogLevel = LOG_LEVEL_VERBOSE;
     self.documentRoot = root;
 
     return self;
+}
+
+-(instancetype) init {
+    return [self initWithContext:[[JSContext alloc] init]];
 }
 
 @end

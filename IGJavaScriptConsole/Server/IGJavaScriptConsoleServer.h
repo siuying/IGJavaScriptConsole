@@ -7,8 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <JavaScriptCore/JavaScriptCore.h>
+
 #import "HTTPServer.h"
 
 @interface IGJavaScriptConsoleServer : HTTPServer
+
+@property (nonatomic, strong) JSContext* context;
+
+-(instancetype) init;
+
+-(instancetype) initWithContext:(JSContext*)context;
 
 @end
