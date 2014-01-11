@@ -24,8 +24,12 @@ static const int jsConsoleLogLevel = LOG_LEVEL_VERBOSE;
 
 - (void)didOpen {
     DDLogDebug(@"open websocket connection");
-    
+
     [super didOpen];
+
+    NSDictionary* message = @{@"status": @"info", @"message": @"JSContext ready."};
+    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:message options:0 error:nil];
+    [self sendMessage:[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding]];
 }
 
 - (void)didReceiveMessage:(NSString *)msg {

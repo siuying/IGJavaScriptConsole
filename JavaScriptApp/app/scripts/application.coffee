@@ -1,24 +1,6 @@
-# Local JavaScript console
-class JavaScriptProcessor
-  evaulate: (source, success, failure) ->
-    try
-      result = eval(source)
-      success(result)
-    catch e
-      failure(e)
-
-# Local javascript console
-class CoffeeScriptProcessor extends JavaScriptProcessor
-  evaulate: (source, success, failure) ->
-    try
-      result = CoffeeScript.eval(source)
-      success(result)
-    catch e
-      failure(e)
-
-# WebSocket console
-class WebSocketProcessor
-  constructor: (@onReady, websocketUrl, language='ruby') ->
+# evaulate with WebSocket
+class WebSocketEvaulator
+  constructor: (websocketUrl, language='ruby', @onReady, @onMessage, @onError) ->
     console.log "connect to websocket: #{websocketUrl}"
     @ws = new WebSocket(websocketUrl)
     @language = language
@@ -42,6 +24,10 @@ class WebSocketProcessor
           message = if data.message then data.message else "Unknown error: #{event}"
           @failedWithMessage(message)
 
+        else if data.status == "info"
+          console.info("server: ", data.message)
+          @onMessage(data.message)
+
         else
           console.error("unknown error, event=", event)
           @failedWithMessage("unknown error: #{event}")
@@ -61,6 +47,8 @@ class WebSocketProcessor
     if @failure
       @failure(message)
       @failure = null
+    else
+      @onError(message)
 
   evaulate: (source, success, failure) =>
     message =
@@ -75,17 +63,24 @@ class WebSocketProcessor
 class ConsoleController
   constructor: (websocketUrl, language) ->
     @jsConsole = $('#console').jqconsole("Connecting to #{websocketUrl}\n", '> ')
-    onReady = =>
-      @prompt()
-    @processor = new WebSocketProcessor onReady, websocketUrl, language
+    @processor = new WebSocketEvaulator websocketUrl, language, @onReady, @onMessage, @onError
+
+  onReady: =>
+    @prompt()
+
+  onMessage: (message) =>
+    @jsConsole.Write(message + '\n', 'jqconsole-output')
+
+  onError: (message) =>
+    @jsConsole.Write(message + '\n', 'jqconsole-error')
 
   prompt: ->
     @jsConsole.Prompt true, (input) =>
       success = (result) =>
-        @jsConsole.Write(result + '\n', 'jqconsole-output')  
+        @onMessage(result)
         @prompt()
       failure = (error) =>
-        @jsConsole.Write(error + '\n', 'jqconsole-error')  
+        @onError(error)
         @prompt()
       @processor.evaulate(input, success, failure)
 
