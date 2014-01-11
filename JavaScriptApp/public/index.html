@@ -1,4 +1,4 @@
-<!DOCTYPE html SYSTEM>
+<!DOCTYPE html>
 <html>
   <head>
     <style>
@@ -57,9 +57,10 @@
   </head>
   <body>
     <div id="console"></div>
-    <script src="/scripts/vendor-811f2835ef6589ccfb821495b10e7683.js"></script>
-    <script src="/scripts/app.js"></script>
+    <script src="/scripts/vendor.js"></script>
+    <script src="/scripts/application.js"></script>
     <script>
+      require("application")();
       $(function () {
         var jqconsole = $('#console').jqconsole('Hi\n', '> ');
         var startPrompt = function () {

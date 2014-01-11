@@ -1,1 +1,0 @@
-this.require.define({application:function(){(function(){console.log("hello")}).call(this)}});

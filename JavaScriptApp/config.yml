@@ -31,7 +31,7 @@ groups:
 modules:
   wrapper: cmd
   ignored: vendor/**/*
-  definition: /scripts/app.js
+  definition: /scripts/application.js
 sprites:
   url: /images/
   path: /images/
