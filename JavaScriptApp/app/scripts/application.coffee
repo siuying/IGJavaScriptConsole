@@ -1,85 +1,17 @@
-ConsoleRubyHelper = require("console_ruby_helper");
-
-# evaulate with WebSocket
-class WebSocketEvaulator
-  constructor: (websocketUrl, language='ruby', @onReady, @onMessage, @onError) ->
-    console.log "connect to websocket: #{websocketUrl}"
-    @ws = new WebSocket(websocketUrl + "/eval/#{language}")
-    @language = language
-
-    @ws.onopen = =>
-      console.log 'opened'
-      @onReady()
-
-    @ws.onmessage = (event) =>
-      console.log "event", event
-      data = if event.data then JSON.parse(event.data) else { status: 'error', message: 'no response'}
-      if data
-        if data.status == "ok"
-          console.log "command: ok"
-          if @success
-            @success(data.result)
-            @success = null
-
-        else if data.status == "error"
-          console.error("error, event=", event)
-          message = if data.message then data.message else "Unknown error: #{event}"
-          @failedWithMessage(message)
-
-        else if data.status == "info"
-          console.info("server: ", data.message)
-          @onMessage(data.message)
-
-        else
-          console.error("unknown error, event=", event)
-          @failedWithMessage("unknown error: #{event}")
-
-      else
-        console.error("unexpected data format", event)
-        @failedWithMessage("unexpected data format: #{event}")
-
-    @ws.onclose = =>
-      @failedWithMessage("Connection closed")
-
-    @ws.onerror = (event) =>
-      console.log "error", event
-      @failedWithMessage("Unknown error: #{event}")
-
-  evaulate: (source, success, failure) =>
-    message =
-      command: 'eval'
-      source: source
-    command = JSON.stringify(message)
-    @success = success
-    @failure = failure
-    @ws.send(command)
-
-  failedWithMessage: (message) ->
-    if @failure
-      @failure(message)
-      @failure = null
-    else
-      @onError(message)
-
+ConsoleMultilineHandler   = require "console_multiline_handler"
+WebSocketEvaulator  = require "websocket_evaulator"
 
 class ConsoleController
-  constructor: (websocketUrl, language) ->
+  constructor: (websocketUrl, @language) ->
+    @multiline = new ConsoleMultilineHandler(@language)
+    @evaulator = new WebSocketEvaulator(websocketUrl, language, @onReady, @onMessage, @onError)
     @jsConsole = $('#console').jqconsole("Connecting to #{websocketUrl}\n", '> ', '..')    
     @jsConsole.SetIndentWidth(2)
     @jsConsole.RegisterMatching '(', ')'
     @jsConsole.RegisterMatching '[', ']'
     @jsConsole.RegisterMatching '{', '}'
-    @processor = new WebSocketEvaulator websocketUrl, language, @onReady, @onMessage, @onError
-
-  onReady: =>
-    @prompt()
-
-  onMessage: (message) =>
-    @jsConsole.Write(message + '\n', 'jqconsole-output')
-
-  onError: (message) =>
-    @jsConsole.Write(message + '\n', 'jqconsole-error')
-
+    
+  # Prompt user for input on the console
   prompt: =>
     inputCallback = (input) =>
       success = (result) =>
@@ -88,8 +20,22 @@ class ConsoleController
       failure = (error) =>
         @onError(error)
         @prompt()
-      @processor.evaulate(input, success, failure)
-    @jsConsole.Prompt true, inputCallback, ConsoleRubyHelper.multiLineCallback, false
+      @evaulator.evaulate(input, success, failure)
+    @jsConsole.Prompt true, inputCallback, @multiline.multiLineCallback, false
+
+  # When the evaulator is ready, it will call onReady
+  onReady: =>
+    @prompt()
+
+  # When the evaulator received a message
+  # message - string, the message
+  onMessage: (message) =>
+    @jsConsole.Write(message + '\n', 'jqconsole-output')
+
+  # When the evaulator received an error message
+  # message - string, error message
+  onError: (message) =>
+    @jsConsole.Write(message + '\n', 'jqconsole-error')
 
 module.exports = ->
   WEBSOCKET_URL = "%%WEBSOCKET_URL%%" # should be replaced by server in runtime

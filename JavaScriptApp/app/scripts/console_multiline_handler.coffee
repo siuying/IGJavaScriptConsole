@@ -1,6 +1,16 @@
 # adapted from https://github.com/replit/jsrepl/blob/master/langs/ruby/jsrepl_ruby.coffee
-class ConsoleRubyHelper
-  @multiLineCallback: (command) ->
+# provide some basic indentation in the console.
+class ConsoleMultilineHandler
+  constructor: (language) ->
+    @language = language
+
+  multiLineCallback: (command) =>
+    if @language == 'ruby'
+      @rubyMultiLineCallback(command)
+    else
+      false
+
+  rubyMultiLineCallback: (command) ->
     levels = 0
     parens = 0
     braces = 0
@@ -69,4 +79,4 @@ TOKENS = ///
 |[^\w\s]+
 ///ig
 
-module.exports = ConsoleRubyHelper
+module.exports = ConsoleMultilineHandler
