@@ -58,8 +58,81 @@
 
   return this.require;
 }).call(this);this.require.define({"application":function(exports, require, module){(function() {
+  var CoffeeScriptProcessor, ConsoleController, JavaScriptProcessor, _ref,
+    __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
+  JavaScriptProcessor = (function() {
+    function JavaScriptProcessor() {}
+
+    JavaScriptProcessor.prototype.evaulate = function(source, success, failure) {
+      var e, result;
+      try {
+        result = eval(source);
+        return success(result);
+      } catch (_error) {
+        e = _error;
+        return failure(e);
+      }
+    };
+
+    return JavaScriptProcessor;
+
+  })();
+
+  CoffeeScriptProcessor = (function(_super) {
+    __extends(CoffeeScriptProcessor, _super);
+
+    function CoffeeScriptProcessor() {
+      _ref = CoffeeScriptProcessor.__super__.constructor.apply(this, arguments);
+      return _ref;
+    }
+
+    CoffeeScriptProcessor.prototype.evaulate = function(source, success, failure) {
+      var e, result;
+      try {
+        result = CoffeeScript["eval"](source);
+        return success(result);
+      } catch (_error) {
+        e = _error;
+        return failure(e);
+      }
+    };
+
+    return CoffeeScriptProcessor;
+
+  })(JavaScriptProcessor);
+
+  ConsoleController = (function() {
+    function ConsoleController() {
+      this.jsConsole = $('#console').jqconsole("Hi!\n", '> ');
+      this.compiler = new CoffeeScriptProcessor;
+    }
+
+    ConsoleController.prototype.prompt = function() {
+      var _this = this;
+      return this.jsConsole.Prompt(true, function(input) {
+        var failure, success;
+        success = function(result) {
+          _this.jsConsole.Write(result + '\n', 'jqconsole-output');
+          return _this.prompt();
+        };
+        failure = function(error) {
+          _this.jsConsole.Write(error + '\n', 'jqconsole-error');
+          return _this.prompt();
+        };
+        return _this.compiler.evaulate(input, success, failure);
+      });
+    };
+
+    return ConsoleController;
+
+  })();
+
   module.exports = function() {
-    return console.info("log from app!");
+    var controller;
+    controller = new ConsoleController;
+    return controller.prompt();
   };
 
 }).call(this);
