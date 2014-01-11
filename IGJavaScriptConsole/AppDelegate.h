@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class JSContext;
 @class IGJavaScriptConsoleServer;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) IGJavaScriptConsoleServer* server;
+@property (strong, nonatomic) JSContext* context;
 
 @end

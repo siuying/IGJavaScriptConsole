@@ -7,9 +7,10 @@
 //
 
 #import "ViewController.h"
+#import "AppDelegate.h"
+#import <JavaScriptCore/JavaScriptCore.h>
 
 @interface ViewController ()
-
 @end
 
 @implementation ViewController
@@ -17,13 +18,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    AppDelegate* delegate = [UIApplication sharedApplication].delegate;
+    delegate.context[@"ViewController"] = self;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+
+-(void) setGreeting:(NSString*)helloText
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.greetingLabel.text = helloText;
+    });
+}
+
+-(NSString*) getGreeting {
+    return self.greetingLabel.text;
 }
 
 @end

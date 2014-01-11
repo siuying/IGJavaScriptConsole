@@ -20,13 +20,15 @@ static const int jsConsoleLogLevel = LOG_LEVEL_VERBOSE;
 {
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
 
+    self.context = [[JSContext alloc] init];
     NSError* error;
-    self.server = [[IGJavaScriptConsoleServer alloc] initWithContext:[[JSContext alloc] init]
+    self.server = [[IGJavaScriptConsoleServer alloc] initWithContext:self.context
                                                             language:IGJavaScriptConsoleServerLanguageRuby];
     self.server.port = 3300;
     if (![self.server start:&error]) {
         DDLogError(@"error: %@", error);
     }
+
     return YES;
 }
 							

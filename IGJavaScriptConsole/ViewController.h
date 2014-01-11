@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <JavaScriptCore/JavaScriptCore.h>
 
-@interface ViewController : UIViewController
+@protocol ViewControllerExport <JSExport>
+
+-(void) setGreeting:(NSString*)helloText;
+-(NSString*) getGreeting;
+
+@end
+
+@interface ViewController : UIViewController <ViewControllerExport>
+
+@property (weak, nonatomic) IBOutlet UILabel *greetingLabel;
 
 @end
