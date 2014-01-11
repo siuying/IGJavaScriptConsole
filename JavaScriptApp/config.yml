@@ -11,7 +11,7 @@ groups:
       - vendor/jquery.min.js
       - vendor/jquery-migrate-1.2.1.min.js
       - vendor/jqconsole.min.js
-      - vendor/coffee-script.js
+      - vendor/ace.js
       - ...
       - app/scripts/application.coffee
   styles:

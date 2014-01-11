@@ -5,23 +5,38 @@ class ConsoleController
   constructor: (websocketUrl, @language) ->
     @multiline = new ConsoleMultilineHandler(@language)
     @evaulator = new WebSocketEvaulator(websocketUrl, language, @onReady, @onMessage, @onError)
+
     @jsConsole = $('#console').jqconsole("Connecting to #{websocketUrl}\n", '> ', '..')    
     @jsConsole.SetIndentWidth(2)
     @jsConsole.RegisterMatching '(', ')'
     @jsConsole.RegisterMatching '[', ']'
     @jsConsole.RegisterMatching '{', '}'
-    
+
+    @editor = ace.edit("editor")
+    @editor.setTheme("ace/theme/xcode")
+    @editor.getSession().setMode("ace/mode/ruby")
+    @editor.commands.addCommand
+      name: 'evaulate'
+      bindKey: {win: 'Ctrl-Enter',  mac: 'Command-Enter'}
+      exec: (editor) =>
+        input = editor.getValue()
+        @jsConsole.Write(input + '\n', 'jqconsole-input')
+        @onInput(input)
+      readOnly: true
+
   # Prompt user for input on the console
   prompt: =>
-    inputCallback = (input) =>
-      success = (result) =>
-        @onMessage(result)
-        @prompt()
-      failure = (error) =>
-        @onError(error)
-        @prompt()
-      @evaulator.evaulate(input, success, failure)
-    @jsConsole.Prompt true, inputCallback, @multiline.multiLineCallback, false
+    @jsConsole.Prompt true, @onInput, @multiline.multiLineCallback, false
+
+  # When user input command
+  onInput: (input) =>
+    success = (result) =>
+      @onMessage(result)
+      @prompt()
+    failure = (error) =>
+      @onError(error)
+      @prompt()
+    @evaulator.evaulate(input, success, failure)
 
   # When the evaulator is ready, it will call onReady
   onReady: =>

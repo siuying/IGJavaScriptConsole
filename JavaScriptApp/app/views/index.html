@@ -11,13 +11,20 @@
     }
     /* The console container element */
     #console {
+      position: absolute;
       top: 0;
       bottom: 0;
+      width: 50%;
       left: 0;
-      right: 0;
       background-color: black;
-      margin: 0 auto;
-      margin-top: 50px;
+    }
+    /* The console container element */
+    #editor {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: 50%;
     }
     /* The inner console element. */
     .jqconsole {
@@ -60,6 +67,7 @@
   </head>
   <body>
     <div id="console"></div>
+    <pre id="editor"></pre>
     <script src="/scripts/vendor.js"></script>
     <script src="/scripts/application.js"></script>
     <script>
