@@ -19,7 +19,7 @@
 
 #undef LOG_LEVEL_DEF
 #define LOG_LEVEL_DEF jsConsoleLogLevel
-static const int jsConsoleLogLevel = LOG_LEVEL_VERBOSE;
+static const int jsConsoleLogLevel = LOG_LEVEL_ERROR;
 
 @implementation IGJSConsoleConnection
 
