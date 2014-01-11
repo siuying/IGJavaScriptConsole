@@ -1,0 +1,489 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5405460C1880FA7900722F2E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5405460B1880FA7900722F2E /* Foundation.framework */; };
+		5405460E1880FA7900722F2E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5405460D1880FA7900722F2E /* CoreGraphics.framework */; };
+		540546101880FA7900722F2E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5405460F1880FA7900722F2E /* UIKit.framework */; };
+		540546161880FA7900722F2E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 540546141880FA7900722F2E /* InfoPlist.strings */; };
+		540546181880FA7900722F2E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 540546171880FA7900722F2E /* main.m */; };
+		5405461C1880FA7900722F2E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5405461B1880FA7900722F2E /* AppDelegate.m */; };
+		5405461F1880FA7900722F2E /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5405461D1880FA7900722F2E /* Main_iPhone.storyboard */; };
+		540546221880FA7900722F2E /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 540546201880FA7900722F2E /* Main_iPad.storyboard */; };
+		540546251880FA7900722F2E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540546241880FA7900722F2E /* ViewController.m */; };
+		540546271880FA7900722F2E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 540546261880FA7900722F2E /* Images.xcassets */; };
+		5405462E1880FA7900722F2E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5405462D1880FA7900722F2E /* XCTest.framework */; };
+		5405462F1880FA7900722F2E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5405460B1880FA7900722F2E /* Foundation.framework */; };
+		540546301880FA7900722F2E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5405460F1880FA7900722F2E /* UIKit.framework */; };
+		540546381880FA7900722F2E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 540546361880FA7900722F2E /* InfoPlist.strings */; };
+		5405463A1880FA7900722F2E /* IGJavaScriptConsoleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 540546391880FA7900722F2E /* IGJavaScriptConsoleTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		540546311880FA7900722F2E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 540546001880FA7900722F2E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 540546071880FA7900722F2E;
+			remoteInfo = IGJavaScriptConsole;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		540546081880FA7900722F2E /* IGJavaScriptConsole.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IGJavaScriptConsole.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5405460B1880FA7900722F2E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5405460D1880FA7900722F2E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5405460F1880FA7900722F2E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		540546131880FA7900722F2E /* IGJavaScriptConsole-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IGJavaScriptConsole-Info.plist"; sourceTree = "<group>"; };
+		540546151880FA7900722F2E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		540546171880FA7900722F2E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		540546191880FA7900722F2E /* IGJavaScriptConsole-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IGJavaScriptConsole-Prefix.pch"; sourceTree = "<group>"; };
+		5405461A1880FA7900722F2E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5405461B1880FA7900722F2E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5405461E1880FA7900722F2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		540546211880FA7900722F2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		540546231880FA7900722F2E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		540546241880FA7900722F2E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		540546261880FA7900722F2E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		5405462C1880FA7900722F2E /* IGJavaScriptConsoleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IGJavaScriptConsoleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5405462D1880FA7900722F2E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		540546351880FA7900722F2E /* IGJavaScriptConsoleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IGJavaScriptConsoleTests-Info.plist"; sourceTree = "<group>"; };
+		540546371880FA7900722F2E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		540546391880FA7900722F2E /* IGJavaScriptConsoleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IGJavaScriptConsoleTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		540546051880FA7900722F2E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5405460E1880FA7900722F2E /* CoreGraphics.framework in Frameworks */,
+				540546101880FA7900722F2E /* UIKit.framework in Frameworks */,
+				5405460C1880FA7900722F2E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		540546291880FA7900722F2E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5405462E1880FA7900722F2E /* XCTest.framework in Frameworks */,
+				540546301880FA7900722F2E /* UIKit.framework in Frameworks */,
+				5405462F1880FA7900722F2E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		540545FF1880FA7900722F2E = {
+			isa = PBXGroup;
+			children = (
+				540546111880FA7900722F2E /* IGJavaScriptConsole */,
+				540546331880FA7900722F2E /* IGJavaScriptConsoleTests */,
+				5405460A1880FA7900722F2E /* Frameworks */,
+				540546091880FA7900722F2E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		540546091880FA7900722F2E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				540546081880FA7900722F2E /* IGJavaScriptConsole.app */,
+				5405462C1880FA7900722F2E /* IGJavaScriptConsoleTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5405460A1880FA7900722F2E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5405460B1880FA7900722F2E /* Foundation.framework */,
+				5405460D1880FA7900722F2E /* CoreGraphics.framework */,
+				5405460F1880FA7900722F2E /* UIKit.framework */,
+				5405462D1880FA7900722F2E /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		540546111880FA7900722F2E /* IGJavaScriptConsole */ = {
+			isa = PBXGroup;
+			children = (
+				5405461A1880FA7900722F2E /* AppDelegate.h */,
+				5405461B1880FA7900722F2E /* AppDelegate.m */,
+				5405461D1880FA7900722F2E /* Main_iPhone.storyboard */,
+				540546201880FA7900722F2E /* Main_iPad.storyboard */,
+				540546231880FA7900722F2E /* ViewController.h */,
+				540546241880FA7900722F2E /* ViewController.m */,
+				540546261880FA7900722F2E /* Images.xcassets */,
+				540546121880FA7900722F2E /* Supporting Files */,
+			);
+			path = IGJavaScriptConsole;
+			sourceTree = "<group>";
+		};
+		540546121880FA7900722F2E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				540546131880FA7900722F2E /* IGJavaScriptConsole-Info.plist */,
+				540546141880FA7900722F2E /* InfoPlist.strings */,
+				540546171880FA7900722F2E /* main.m */,
+				540546191880FA7900722F2E /* IGJavaScriptConsole-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		540546331880FA7900722F2E /* IGJavaScriptConsoleTests */ = {
+			isa = PBXGroup;
+			children = (
+				540546391880FA7900722F2E /* IGJavaScriptConsoleTests.m */,
+				540546341880FA7900722F2E /* Supporting Files */,
+			);
+			path = IGJavaScriptConsoleTests;
+			sourceTree = "<group>";
+		};
+		540546341880FA7900722F2E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				540546351880FA7900722F2E /* IGJavaScriptConsoleTests-Info.plist */,
+				540546361880FA7900722F2E /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		540546071880FA7900722F2E /* IGJavaScriptConsole */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5405463D1880FA7900722F2E /* Build configuration list for PBXNativeTarget "IGJavaScriptConsole" */;
+			buildPhases = (
+				540546041880FA7900722F2E /* Sources */,
+				540546051880FA7900722F2E /* Frameworks */,
+				540546061880FA7900722F2E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IGJavaScriptConsole;
+			productName = IGJavaScriptConsole;
+			productReference = 540546081880FA7900722F2E /* IGJavaScriptConsole.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5405462B1880FA7900722F2E /* IGJavaScriptConsoleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 540546401880FA7900722F2E /* Build configuration list for PBXNativeTarget "IGJavaScriptConsoleTests" */;
+			buildPhases = (
+				540546281880FA7900722F2E /* Sources */,
+				540546291880FA7900722F2E /* Frameworks */,
+				5405462A1880FA7900722F2E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				540546321880FA7900722F2E /* PBXTargetDependency */,
+			);
+			name = IGJavaScriptConsoleTests;
+			productName = IGJavaScriptConsoleTests;
+			productReference = 5405462C1880FA7900722F2E /* IGJavaScriptConsoleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		540546001880FA7900722F2E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Francis Chong";
+				TargetAttributes = {
+					5405462B1880FA7900722F2E = {
+						TestTargetID = 540546071880FA7900722F2E;
+					};
+				};
+			};
+			buildConfigurationList = 540546031880FA7900722F2E /* Build configuration list for PBXProject "IGJavaScriptConsole" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 540545FF1880FA7900722F2E;
+			productRefGroup = 540546091880FA7900722F2E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				540546071880FA7900722F2E /* IGJavaScriptConsole */,
+				5405462B1880FA7900722F2E /* IGJavaScriptConsoleTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		540546061880FA7900722F2E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				540546221880FA7900722F2E /* Main_iPad.storyboard in Resources */,
+				540546271880FA7900722F2E /* Images.xcassets in Resources */,
+				5405461F1880FA7900722F2E /* Main_iPhone.storyboard in Resources */,
+				540546161880FA7900722F2E /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5405462A1880FA7900722F2E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				540546381880FA7900722F2E /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		540546041880FA7900722F2E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				540546251880FA7900722F2E /* ViewController.m in Sources */,
+				5405461C1880FA7900722F2E /* AppDelegate.m in Sources */,
+				540546181880FA7900722F2E /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		540546281880FA7900722F2E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5405463A1880FA7900722F2E /* IGJavaScriptConsoleTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		540546321880FA7900722F2E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 540546071880FA7900722F2E /* IGJavaScriptConsole */;
+			targetProxy = 540546311880FA7900722F2E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		540546141880FA7900722F2E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				540546151880FA7900722F2E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		5405461D1880FA7900722F2E /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5405461E1880FA7900722F2E /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		540546201880FA7900722F2E /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				540546211880FA7900722F2E /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		540546361880FA7900722F2E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				540546371880FA7900722F2E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5405463B1880FA7900722F2E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5405463C1880FA7900722F2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5405463E1880FA7900722F2E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IGJavaScriptConsole/IGJavaScriptConsole-Prefix.pch";
+				INFOPLIST_FILE = "IGJavaScriptConsole/IGJavaScriptConsole-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		5405463F1880FA7900722F2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IGJavaScriptConsole/IGJavaScriptConsole-Prefix.pch";
+				INFOPLIST_FILE = "IGJavaScriptConsole/IGJavaScriptConsole-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		540546411880FA7900722F2E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/IGJavaScriptConsole.app/IGJavaScriptConsole";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IGJavaScriptConsole/IGJavaScriptConsole-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "IGJavaScriptConsoleTests/IGJavaScriptConsoleTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		540546421880FA7900722F2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/IGJavaScriptConsole.app/IGJavaScriptConsole";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IGJavaScriptConsole/IGJavaScriptConsole-Prefix.pch";
+				INFOPLIST_FILE = "IGJavaScriptConsoleTests/IGJavaScriptConsoleTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		540546031880FA7900722F2E /* Build configuration list for PBXProject "IGJavaScriptConsole" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5405463B1880FA7900722F2E /* Debug */,
+				5405463C1880FA7900722F2E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5405463D1880FA7900722F2E /* Build configuration list for PBXNativeTarget "IGJavaScriptConsole" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5405463E1880FA7900722F2E /* Debug */,
+				5405463F1880FA7900722F2E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		540546401880FA7900722F2E /* Build configuration list for PBXNativeTarget "IGJavaScriptConsoleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				540546411880FA7900722F2E /* Debug */,
+				540546421880FA7900722F2E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 540546001880FA7900722F2E /* Project object */;
+}
