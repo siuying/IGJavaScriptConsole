@@ -30,7 +30,7 @@ between iOS and desktop.
 Add following lines to your ``Podfile``:
 
 ```ruby
-pod 'IGJavaScriptConsole'
+pod 'IGJavaScriptConsole', '~> 0.1.1'
 ```
 
 ## Usage
