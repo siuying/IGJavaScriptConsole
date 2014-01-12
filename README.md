@@ -4,6 +4,8 @@ A JavaScript/Ruby REPL for your Objective-C apps.
 
 ![http://f.cl.ly/items/2I3v1c0T001E2K1i1l2l/console.gif](http://f.cl.ly/items/2I3v1c0T001E2K1i1l2l/console.gif)
 
+Check [the blog post](http://reality.hk/posts/2014/01/12/building-a-ios-ruby-repl/) for more details.
+
 ## Why?
 
 With iOS 7 shipped with JavaScriptCore, we can now run Opal (a JavaScript 
