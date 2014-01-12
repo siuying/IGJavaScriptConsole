@@ -1,5 +1,5 @@
 paths:
-  public: "public"
+  public: "JavaScriptConsoleWeb.bundle"
 groups:
   scripts:
     paths:
