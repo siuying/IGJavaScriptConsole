@@ -21,6 +21,8 @@ static const int jsConsoleLogLevel = LOG_LEVEL_VERBOSE;
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
 
     self.context = [[JSContext alloc] init];
+    self.context[@"App"] = self;
+
     NSError* error;
     self.server = [[IGJavaScriptConsoleServer alloc] initWithContext:self.context
                                                             language:IGJavaScriptConsoleServerLanguageRuby];

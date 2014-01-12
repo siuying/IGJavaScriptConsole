@@ -5,4 +5,5 @@ class ViewController
   alias_native :greeting=, :setGreeting
 end
 
-ViewController.new(`viewController`).greeting
+vc = ViewController.new(`App.viewController`)
+vc.greeting = "Hi!"

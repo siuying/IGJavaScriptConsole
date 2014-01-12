@@ -11,6 +11,7 @@
 #import <JavaScriptCore/JavaScriptCore.h>
 
 @interface ViewController ()
+@property (nonatomic, strong) NSTimer* timer;
 @end
 
 @implementation ViewController
@@ -20,7 +21,10 @@
     [super viewDidLoad];
     
     AppDelegate* delegate = [UIApplication sharedApplication].delegate;
-    delegate.context[@"ViewController"] = self;
+    if (!delegate.context[@"App"]) {
+        delegate.context[@"App"] = @{};
+    }
+    delegate.context[@"App"][@"viewController"] = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,7 +39,8 @@
     });
 }
 
--(NSString*) getGreeting {
+-(NSString*) getGreeting
+{
     return self.greetingLabel.text;
 }
 
