@@ -16,11 +16,11 @@ run on device or simulator in realtime?
 
 ## Implementation
 
-- JavaScriptCoreOpalAdditions Load Opal into JavaScriptCore, and some 
+- [JavaScriptCoreOpalAdditions](https://github.com/siuying/JavaScriptCoreOpalAdditions) Load Opal into JavaScriptCore, and some 
 additions specifically for iOS.
-- jqConsole Web based terminal.
-- ACE Editor Web based code editor with syntax highlighting.
-- CocoaHTTPServer HTTP and WebSocket server for realtime communication 
+- [jqConsole](https://github.com/replit/jq-console) Web based terminal.
+- [Ace](http://ace.c9.io/) Web based code editor with syntax highlighting.
+- [CocoaHTTPServer](https://github.com/robbiehanson/CocoaHTTPServer) HTTP and WebSocket server for realtime communication 
 between iOS and desktop.
 
 ## Installation
