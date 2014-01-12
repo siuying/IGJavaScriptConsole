@@ -16,8 +16,8 @@ run on device or simulator in realtime?
 
 ## Implementation
 
-- [JavaScriptCoreOpalAdditions](https://github.com/siuying/JavaScriptCoreOpalAdditions) Load Opal into JavaScriptCore, and some 
-additions specifically for iOS.
+- [Opal](http://opalrb.org/) A Ruby to JavaScript compiler. It even come with sprockets extension which lets you bundle the compiled script easily.
+- [JavaScriptCoreOpalAdditions](https://github.com/siuying/JavaScriptCoreOpalAdditions) A thin layer of Objective-C that load and provides native features to Opal.
 - [jqConsole](https://github.com/replit/jq-console) Web based terminal.
 - [Ace](http://ace.c9.io/) Web based code editor with syntax highlighting.
 - [CocoaHTTPServer](https://github.com/robbiehanson/CocoaHTTPServer) HTTP and WebSocket server for realtime communication 
