@@ -9,7 +9,7 @@ PODS:
   - CocoaLumberjack/Core (1.7.0)
   - CocoaLumberjack/Extensions (1.7.0):
     - CocoaLumberjack/Core
-  - JavaScriptCoreOpalAdditions (0.2.3)
+  - JavaScriptCoreOpalAdditions (0.2.4)
   - Kiwi (2.2.3):
     - Kiwi/SenTestingKit
   - Kiwi/ARC (2.2.3)
@@ -20,14 +20,14 @@ PODS:
 
 DEPENDENCIES:
   - CocoaHTTPServer
-  - JavaScriptCoreOpalAdditions
+  - JavaScriptCoreOpalAdditions (~> 0.2.4)
   - Kiwi
 
 SPEC CHECKSUMS:
   CocoaAsyncSocket: 50a73b79fb77f0dbb57cdc5c247c8f19e9cb3b33
   CocoaHTTPServer: 7c2fce6617f7fda0e3f4fc34f96e562caa7c7bd8
   CocoaLumberjack: be87113f649942f020a37c061c58009b6ee5ff68
-  JavaScriptCoreOpalAdditions: a996ff2e4576307f8fdb38cacd9bf2e3d614f5b8
+  JavaScriptCoreOpalAdditions: 2ad6a8d346fe139ea7a3cbdaf56a3767514a3397
   Kiwi: 04c51e880831d291748ec702d42c4101f7eb95c9
 
 COCOAPODS: 0.29.0

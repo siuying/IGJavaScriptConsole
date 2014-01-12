@@ -9,10 +9,14 @@
 #import "IGRubyEvaulatorWebSocket.h"
 #import "JSContext+OpalAdditions.h"
 
+@interface JSContext (OpalAdditionsPrivate)
+@property (nonatomic, retain) JSValue* opalCompiler;
+@end
+
 @implementation IGRubyEvaulatorWebSocket
 
 - (NSString*) evaulateSource:(NSString*)source {
-    JSValue* value = [self.context evaluateRuby:source];
+    JSValue* value = [self.context evaluateRuby:source irbMode:YES];
     return [value toString];
 }
 
