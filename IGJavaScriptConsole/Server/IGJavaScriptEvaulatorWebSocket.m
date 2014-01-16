@@ -77,9 +77,9 @@ static const int jsConsoleLogLevel = LOG_LEVEL_ERROR;
         if (!self.context.exception) {
             NSString* valueString = [value isNull] ? @"(null)" : ([value isUndefined] ? @"(undefined)" : [value toString]);
             NSDictionary* message = @{@"status": @"ok", @"result": valueString};
-            NSError* error;
+            NSError* error = nil;
             NSData* jsonData = [NSJSONSerialization dataWithJSONObject:message options:0 error:&error];
-            if (error) {
+            if (!jsonData && error) {
                 DDLogError(@"error serializing data to json: %@", message);
             }
             [self sendMessage:[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding]];
@@ -93,10 +93,10 @@ static const int jsConsoleLogLevel = LOG_LEVEL_ERROR;
 
 -(void) sendErrorMessage:(NSString*)message {
     DDLogError(@"send error message: %@", message);
-    NSError* error;
+    NSError* error = nil;
     NSDictionary* data = @{@"status": @"error", @"message": message ? message : @""};
     NSData* jsonData = [NSJSONSerialization dataWithJSONObject:data options:0 error:&error];
-    if (error) {
+    if (!jsonData && error) {
         DDLogError(@"error serializing data to json: %@", message);
     }
     [self sendMessage:[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding]];
