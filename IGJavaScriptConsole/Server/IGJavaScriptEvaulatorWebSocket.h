@@ -15,6 +15,6 @@
 
 -(instancetype) initWithRequest:(HTTPMessage *)request socket:(GCDAsyncSocket *)socket context:(JSContext*)context;
 
--(NSString*) evaulateSource:(NSString*)source;
+-(JSValue*) evaulateSource:(NSString*)source;
 
 @end

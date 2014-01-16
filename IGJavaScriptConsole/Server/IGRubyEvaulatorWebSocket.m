@@ -15,9 +15,8 @@
 
 @implementation IGRubyEvaulatorWebSocket
 
-- (NSString*) evaulateSource:(NSString*)source {
-    JSValue* value = [self.context evaluateRuby:source irbMode:YES];
-    return [value toString];
+- (JSValue*) evaulateSource:(NSString*)source {
+    return [self.context evaluateRuby:source irbMode:YES];
 }
 
 @end

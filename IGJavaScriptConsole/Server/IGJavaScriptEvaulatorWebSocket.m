@@ -64,8 +64,8 @@ static const int jsConsoleLogLevel = LOG_LEVEL_ERROR;
     [super didClose];
 }
 
-- (NSString*) evaulateSource:(NSString*)source {
-    return [[self.context evaluateScript:source] toString];
+- (JSValue*) evaulateSource:(NSString*)source {
+    return [self.context evaluateScript:source];
 }
 
 #pragma mark - Private
@@ -73,10 +73,10 @@ static const int jsConsoleLogLevel = LOG_LEVEL_ERROR;
 - (void) didReceiveEvaulateWithSource:(NSString*)source language:(NSString*)language {
     @synchronized(self.context) {
         self.context.exception = nil;
-        NSString* value = [self evaulateSource:source];
+        JSValue* value = [self evaulateSource:source];
         if (!self.context.exception) {
-            NSString* valueString = value;
-            NSDictionary* message = @{@"status": @"ok", @"result": valueString ? valueString : @"(null)"};
+            NSString* valueString = [value isNull] ? @"(null)" : ([value isUndefined] ? @"(undefined)" : [value toString]);
+            NSDictionary* message = @{@"status": @"ok", @"result": valueString};
             NSError* error;
             NSData* jsonData = [NSJSONSerialization dataWithJSONObject:message options:0 error:&error];
             if (error) {
