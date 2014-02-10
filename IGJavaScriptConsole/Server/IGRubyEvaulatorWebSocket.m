@@ -16,11 +16,7 @@
 @implementation IGRubyEvaulatorWebSocket
 
 - (JSValue*) evaulateSource:(NSString*)source {
-    __block JSValue* value;
-    dispatch_sync(dispatch_get_main_queue(), ^{
-        value = [self.context evaluateRuby:source irbMode:YES];
-    });
-    return value;
+    return [self.context evaluateRuby:source irbMode:YES];
 }
 
 @end

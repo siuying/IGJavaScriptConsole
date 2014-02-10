@@ -65,17 +65,13 @@ static const int jsConsoleLogLevel = LOG_LEVEL_ERROR;
 }
 
 - (JSValue*) evaulateSource:(NSString*)source {
-    __block JSValue* value;
-    dispatch_sync(dispatch_get_main_queue(), ^{
-        value = [self.context evaluateScript:source];
-    });
-    return value;
+    return [self.context evaluateScript:source];
 }
 
 #pragma mark - Private
 
 - (void) didReceiveEvaulateWithSource:(NSString*)source language:(NSString*)language {
-    @synchronized(self.context) {
+    dispatch_sync(dispatch_get_main_queue(), ^{
         self.context.exception = nil;
         JSValue* value = [self evaulateSource:source];
         if (!self.context.exception) {
@@ -92,7 +88,7 @@ static const int jsConsoleLogLevel = LOG_LEVEL_ERROR;
             DDLogError(@"error evaulate: %@", error);
             [self sendErrorMessage:error];
         }
-    }
+    });
 }
 
 -(void) sendErrorMessage:(NSString*)message {
