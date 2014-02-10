@@ -26,12 +26,11 @@
 		5405464A1880FFC500722F2E /* IGJSConsoleConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 540546491880FFC500722F2E /* IGJSConsoleConnection.m */; };
 		5405464D1881013200722F2E /* IGJavaScriptConsoleServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5405464C1881013200722F2E /* IGJavaScriptConsoleServer.m */; };
 		5405464E1881013200722F2E /* IGJavaScriptConsoleServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5405464C1881013200722F2E /* IGJavaScriptConsoleServer.m */; };
-		5405465018810A4A00722F2E /* public in Resources */ = {isa = PBXBuildFile; fileRef = 5405464F18810A4A00722F2E /* public */; };
-		5405465118810A4A00722F2E /* public in Resources */ = {isa = PBXBuildFile; fileRef = 5405464F18810A4A00722F2E /* public */; };
 		540546541881331300722F2E /* IGJavaScriptEvaulatorWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 540546531881331300722F2E /* IGJavaScriptEvaulatorWebSocket.m */; };
 		540546551881331300722F2E /* IGJavaScriptEvaulatorWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 540546531881331300722F2E /* IGJavaScriptEvaulatorWebSocket.m */; };
 		540546581881620400722F2E /* IGRubyEvaulatorWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 540546571881620400722F2E /* IGRubyEvaulatorWebSocket.m */; };
 		540546591881620400722F2E /* IGRubyEvaulatorWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 540546571881620400722F2E /* IGRubyEvaulatorWebSocket.m */; };
+		542AD8571882F9A600FC9722 /* JavaScriptConsoleWeb.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 542AD8561882F9A600FC9722 /* JavaScriptConsoleWeb.bundle */; };
 		5EA91B97C3BF4CD2BA8E7CF0 /* libPods-IGJavaScriptConsoleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DC846F0EA6048F882192145 /* libPods-IGJavaScriptConsoleTests.a */; };
 /* End PBXBuildFile section */
 
@@ -70,11 +69,12 @@
 		540546491880FFC500722F2E /* IGJSConsoleConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IGJSConsoleConnection.m; path = Server/IGJSConsoleConnection.m; sourceTree = "<group>"; };
 		5405464B1881013200722F2E /* IGJavaScriptConsoleServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IGJavaScriptConsoleServer.h; path = Server/IGJavaScriptConsoleServer.h; sourceTree = "<group>"; };
 		5405464C1881013200722F2E /* IGJavaScriptConsoleServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IGJavaScriptConsoleServer.m; path = Server/IGJavaScriptConsoleServer.m; sourceTree = "<group>"; };
-		5405464F18810A4A00722F2E /* public */ = {isa = PBXFileReference; lastKnownFileType = folder; name = public; path = JavaScriptApp/public; sourceTree = SOURCE_ROOT; };
 		540546521881331300722F2E /* IGJavaScriptEvaulatorWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IGJavaScriptEvaulatorWebSocket.h; path = Server/IGJavaScriptEvaulatorWebSocket.h; sourceTree = "<group>"; };
 		540546531881331300722F2E /* IGJavaScriptEvaulatorWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IGJavaScriptEvaulatorWebSocket.m; path = Server/IGJavaScriptEvaulatorWebSocket.m; sourceTree = "<group>"; };
 		540546561881620400722F2E /* IGRubyEvaulatorWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IGRubyEvaulatorWebSocket.h; path = Server/IGRubyEvaulatorWebSocket.h; sourceTree = "<group>"; };
 		540546571881620400722F2E /* IGRubyEvaulatorWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IGRubyEvaulatorWebSocket.m; path = Server/IGRubyEvaulatorWebSocket.m; sourceTree = "<group>"; };
+		542AD8561882F9A600FC9722 /* JavaScriptConsoleWeb.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = JavaScriptConsoleWeb.bundle; path = JavaScriptApp/JavaScriptConsoleWeb.bundle; sourceTree = SOURCE_ROOT; };
+		542AD8581882FAB500FC9722 /* IGJavaScriptConsole.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IGJavaScriptConsole.h; path = Server/IGJavaScriptConsole.h; sourceTree = "<group>"; };
 		558BC02CE36143709832F60F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DC846F0EA6048F882192145 /* libPods-IGJavaScriptConsoleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IGJavaScriptConsoleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DFB6F39569D4377A98EAA4C /* Pods-IGJavaScriptConsoleTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IGJavaScriptConsoleTests.xcconfig"; path = "Pods/Pods-IGJavaScriptConsoleTests.xcconfig"; sourceTree = "<group>"; };
@@ -190,7 +190,7 @@
 		540546431880FB0200722F2E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				5405464F18810A4A00722F2E /* public */,
+				542AD8561882F9A600FC9722 /* JavaScriptConsoleWeb.bundle */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -206,6 +206,7 @@
 				540546571881620400722F2E /* IGRubyEvaulatorWebSocket.m */,
 				5405464B1881013200722F2E /* IGJavaScriptConsoleServer.h */,
 				5405464C1881013200722F2E /* IGJavaScriptConsoleServer.m */,
+				542AD8581882FAB500FC9722 /* IGJavaScriptConsole.h */,
 			);
 			name = Server;
 			sourceTree = "<group>";
@@ -290,10 +291,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5405465018810A4A00722F2E /* public in Resources */,
 				540546221880FA7900722F2E /* Main_iPad.storyboard in Resources */,
 				540546271880FA7900722F2E /* Images.xcassets in Resources */,
 				5405461F1880FA7900722F2E /* Main_iPhone.storyboard in Resources */,
+				542AD8571882F9A600FC9722 /* JavaScriptConsoleWeb.bundle in Resources */,
 				540546161880FA7900722F2E /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,7 +304,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				540546381880FA7900722F2E /* InfoPlist.strings in Resources */,
-				5405465118810A4A00722F2E /* public in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

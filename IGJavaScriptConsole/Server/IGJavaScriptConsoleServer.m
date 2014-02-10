@@ -23,10 +23,11 @@ static const int jsConsoleLogLevel = LOG_LEVEL_ERROR;
     self.language = language;
     self.connectionClass = [IGJSConsoleConnection class];
     self.type = @"_http._tcp.";
+    self.port = 3300;
 
-    NSString* root = [[[NSBundle bundleForClass:[self class]] resourcePath] stringByAppendingPathComponent:@"public"];
-    DDLogInfo(@"Setting document root: %@", root);
-    self.documentRoot = root;
+    NSString* webBundlePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"JavaScriptConsoleWeb" ofType:@"bundle"];
+    DDLogInfo(@"Setting document root: %@", webBundlePath);
+    self.documentRoot = webBundlePath;
 
     return self;
 }

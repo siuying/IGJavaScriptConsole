@@ -64,10 +64,10 @@ static const int jsConsoleLogLevel = LOG_LEVEL_ERROR;
     [super didClose];
 }
 
-- (NSString*) evaulateSource:(NSString*)source {
-    __block NSString* value;
+- (JSValue*) evaulateSource:(NSString*)source {
+    __block JSValue* value;
     dispatch_sync(dispatch_get_main_queue(), ^{
-        value = [[self.context evaluateScript:source] toString];
+        value = [self.context evaluateScript:source];
     });
     return value;
 }
@@ -77,13 +77,13 @@ static const int jsConsoleLogLevel = LOG_LEVEL_ERROR;
 - (void) didReceiveEvaulateWithSource:(NSString*)source language:(NSString*)language {
     @synchronized(self.context) {
         self.context.exception = nil;
-        NSString* value = [self evaulateSource:source];
+        JSValue* value = [self evaulateSource:source];
         if (!self.context.exception) {
-            NSString* valueString = value;
-            NSDictionary* message = @{@"status": @"ok", @"result": valueString ? valueString : @"(null)"};
-            NSError* error;
+            NSString* valueString = [value isNull] ? @"(null)" : ([value isUndefined] ? @"(undefined)" : [value toString]);
+            NSDictionary* message = @{@"status": @"ok", @"result": valueString};
+            NSError* error = nil;
             NSData* jsonData = [NSJSONSerialization dataWithJSONObject:message options:0 error:&error];
-            if (error) {
+            if (!jsonData && error) {
                 DDLogError(@"error serializing data to json: %@", message);
             }
             [self sendMessage:[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding]];
@@ -97,10 +97,10 @@ static const int jsConsoleLogLevel = LOG_LEVEL_ERROR;
 
 -(void) sendErrorMessage:(NSString*)message {
     DDLogError(@"send error message: %@", message);
-    NSError* error;
+    NSError* error = nil;
     NSDictionary* data = @{@"status": @"error", @"message": message ? message : @""};
     NSData* jsonData = [NSJSONSerialization dataWithJSONObject:data options:0 error:&error];
-    if (error) {
+    if (!jsonData && error) {
         DDLogError(@"error serializing data to json: %@", message);
     }
     [self sendMessage:[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding]];

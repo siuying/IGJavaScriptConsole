@@ -4,6 +4,8 @@ A JavaScript/Ruby REPL for your Objective-C apps.
 
 ![http://f.cl.ly/items/2I3v1c0T001E2K1i1l2l/console.gif](http://f.cl.ly/items/2I3v1c0T001E2K1i1l2l/console.gif)
 
+Check [the blog post](http://reality.hk/posts/2014/01/12/building-a-ios-ruby-repl/) for more details.
+
 ## Why?
 
 With iOS 7 shipped with JavaScriptCore, we can now run Opal (a JavaScript 
@@ -16,8 +18,8 @@ run on device or simulator in realtime?
 
 ## Implementation
 
-- [JavaScriptCoreOpalAdditions](https://github.com/siuying/JavaScriptCoreOpalAdditions) Load Opal into JavaScriptCore, and some 
-additions specifically for iOS.
+- [Opal](http://opalrb.org/) A Ruby to JavaScript compiler. It even come with sprockets extension which lets you bundle the compiled script easily.
+- [JavaScriptCoreOpalAdditions](https://github.com/siuying/JavaScriptCoreOpalAdditions) A thin layer of Objective-C that load and provides native features to Opal.
 - [jqConsole](https://github.com/replit/jq-console) Web based terminal.
 - [Ace](http://ace.c9.io/) Web based code editor with syntax highlighting.
 - [CocoaHTTPServer](https://github.com/robbiehanson/CocoaHTTPServer) HTTP and WebSocket server for realtime communication 
@@ -28,7 +30,7 @@ between iOS and desktop.
 Add following lines to your ``Podfile``:
 
 ```ruby
-pod 'IGJavaScriptConsole'
+pod 'IGJavaScriptConsole', '~> 0.1.1'
 ```
 
 ## Usage

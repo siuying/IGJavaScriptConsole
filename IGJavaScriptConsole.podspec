@@ -13,10 +13,12 @@ DESC
   s.author       = { "Francis Chong" => "francis@ignition.hk" }
 
   s.source       = { :git => "https://github.com/siuying/IGJavaScriptConsole.git", :tag => s.version.to_s }
-  s.source_files  = 'IGJavaScriptConsole/Server/**/*.{h,m}'
+  s.source_files = 'IGJavaScriptConsole/Server/**/*.{h,m}'
+  s.resources    = 'JavaScriptApp/JavaScriptConsoleWeb.bundle'
 
   s.ios.deployment_target = '7.0'
-  s.osx.deployment_target = '10.9'
+
+  s.framework    = 'JavaScriptCore'
 
   s.dependency 'CocoaHTTPServer', '~> 2.3'
   s.dependency 'JavaScriptCoreOpalAdditions', '~> 0.3.0'
