@@ -65,7 +65,11 @@ static const int jsConsoleLogLevel = LOG_LEVEL_ERROR;
 }
 
 - (NSString*) evaulateSource:(NSString*)source {
-    return [[self.context evaluateScript:source] toString];
+    __block NSString* value;
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        value = [[self.context evaluateScript:source] toString];
+    });
+    return value;
 }
 
 #pragma mark - Private
